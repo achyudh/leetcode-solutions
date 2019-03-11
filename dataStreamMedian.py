@@ -1,6 +1,11 @@
 import heapq
 
 class MedianFinder:
+    
+    # Usage:
+    # obj = MedianFinder()
+    # obj.addNum(num)
+    # param_2 = obj.findMedian()
 
     def __init__(self):
         """
@@ -32,9 +37,3 @@ class MedianFinder:
             return -self.loHeap[0]
         else:
             return (self.hiHeap[0] - self.loHeap[0]) / 2
-
-
-# Usage:
-# obj = MedianFinder()
-# obj.addNum(num)
-# param_2 = obj.findMedian()
