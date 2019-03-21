@@ -18,7 +18,6 @@ class Deque:
         self.tail = self.tail.prevPtr
             self.tail.nextPtr = None
         return removed_node
-
     
     def pushHead(self, node):
         node.prevPtr = None
