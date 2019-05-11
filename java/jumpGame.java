@@ -1,18 +1,9 @@
 class Solution {
-    
     public boolean canJump(int[] nums) {
-        for (int i0 = nums.length - 1; i0 > 0; i0--) {
-            boolean isAcc = false;
-            
-            for (int i1 = i0 - 1; i1 >= 0; i1--)
-                if (i1 + nums[i1] >= i0) {
-                    isAcc = true;
-                    break;
-                }
-            
-            if (!isAcc) return false;
-        }
-        
-        return true;
+        int lastPos = nums.length - 1;
+        for (int i0 = nums.length - 1; i0 >= 0; i0--)
+            if (i0 + nums[i0] >= lastPos)
+                lastPos = i0;
+        return lastPos == 0;
     }
 }
