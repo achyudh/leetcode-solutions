@@ -2,9 +2,6 @@ class Solution {
     int[] nums, memo;
     
     public int lengthOfLIS(int pos) {
-        if (pos >= nums.length)
-            return 0;
-        
         if (memo[pos] == 0) {
             int maxSeqLen = 1;   
             for (int i = pos + 1; i < nums.length; i++)
