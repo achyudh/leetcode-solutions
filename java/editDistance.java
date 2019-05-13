@@ -1,5 +1,4 @@
 class Solution {
-    int maxDistance;
     int[][] memo;
     String word1, word2;
     
@@ -12,15 +11,15 @@ class Solution {
             return word1.length() - ptr1;
         
         if (memo[ptr1][ptr2] == -1) {
-            int repCost = editDistance(ptr1 + 1, ptr2 + 1);
-            int insCost = editDistance(ptr1, ptr2 + 1);
-            int delCost = editDistance(ptr1 + 1, ptr2);
-            
-            int nxtCost = maxDistance;
             if (word1.charAt(ptr1) == word2.charAt(ptr2))
-                nxtCost = repCost - 1;
-               
-            memo[ptr1][ptr2] = 1 + Math.min(Math.min(repCost, insCost), Math.min(delCost, nxtCost));
+                 memo[ptr1][ptr2] = editDistance(ptr1 + 1, ptr2 + 1);
+            
+            else {
+                int repCost = editDistance(ptr1 + 1, ptr2 + 1);
+                int insCost = editDistance(ptr1, ptr2 + 1);
+                int delCost = editDistance(ptr1 + 1, ptr2);
+                memo[ptr1][ptr2] = 1 + Math.min(Math.min(repCost, insCost), delCost);
+            }
         }
         
         return memo[ptr1][ptr2];
@@ -29,7 +28,6 @@ class Solution {
     public int minDistance(String word1, String word2) {
         this.word1 = word1;
         this.word2 = word2;
-        this.maxDistance = word1.length() + word2.length();
         this.memo = new int[word1.length()][word2.length()];
         
         for (int[] row : memo)
