@@ -3,9 +3,7 @@ class Solution {
     String word1, word2;
     
     public int editDistance(int ptr1, int ptr2) {
-        if (ptr1 >= word1.length() && ptr2 >= word2.length())
-            return 0;
-        else if (ptr1 >= word1.length())
+        if (ptr1 >= word1.length())
             return word2.length() - ptr2;
         else if (ptr2 >= word2.length())
             return word1.length() - ptr1;
