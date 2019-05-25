@@ -6,10 +6,11 @@ class Solution:
         
         if not matrix:
             return output
-        
+
+        max_iter = len(matrix) * len(matrix[0])
         bounds = [len(matrix[0]) - 1, len(matrix) - 1, 0, 1]
         
-        while len(output) < len(matrix) * len(matrix[0]):
+        while len(output) < max_iter:
             if direction == 0:
                 while ptr2 <= bounds[0]:
                     output.append(matrix[ptr1][ptr2])
